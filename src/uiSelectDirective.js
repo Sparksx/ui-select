@@ -413,9 +413,11 @@ uis.directive('uiSelect',
            if ($select.search === '' && !opened) {
               dropdown[0].style.opacity = 0;
               opened = true;
-           }
+          }
 
-            if (!uisOffset(dropdown).height && $select.$animate && $select.$animate.on && $select.$animate.enabled(dropdown)) {
+            var isSelect2Theme = angular.element(element).hasClass("select2");
+            if (!uisOffset(dropdown).height && $select.$animate && $select.$animate.on && $select.$animate.enabled(dropdown) && !isSelect2Theme) {
+
               var needsCalculated = true;
 
               $select.$animate.on('enter', dropdown, function (elem, phase) {
